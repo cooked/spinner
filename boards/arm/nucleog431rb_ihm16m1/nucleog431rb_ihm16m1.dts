@@ -7,7 +7,7 @@
 /dts-v1/;
 #include <st/g4/stm32g431Xb.dtsi>
 #include <st/g4/stm32g431r(6-8-b)tx-pinctrl.dtsi>
-#include <dts-bindings/adc/stm32g4xx.h>
+#include <stm32g4xx.h>
 
 / {
 	model = "NUCLEOG431RB + IHM16M1";

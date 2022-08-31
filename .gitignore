@@ -1,6 +1,7 @@
 # zephyr
 /build*
 /twister-out*
+/zephyr
 
 # python
 .venv

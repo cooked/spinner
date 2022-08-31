@@ -1,0 +1,28 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"files.associations": {
+			"letib.h": "c",
+			"ad5423.h": "c",
+			"stm32f4xx_hal.h": "c",
+			"tim.h": "c",
+			"usart.h": "c",
+			"cstddef": "cpp",
+			"uart_messages.h": "c",
+			"arm_math.h": "c",
+			"cstdint": "c",
+			"main.h": "c",
+			"*.inc": "cpp",
+			"ads125h02.h": "c",
+			"math.h": "c",
+			"wlp.h": "c",
+			"algorithm": "cpp",
+			"adg426br.h": "c"
+		},
+		"makefile.extensionOutputFolder": "./.vscode"
+	}
+}
