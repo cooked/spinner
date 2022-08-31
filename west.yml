@@ -1,6 +1,10 @@
 # Copyright (c) 2021 Teslabs Engineering S.L.
 # SPDX-License-Identifier: Apache-2.0
 
+
+# https://docs.zephyrproject.org/3.1.0/develop/west/manifest.html
+
+
 manifest:
   self:
     path: spinner
