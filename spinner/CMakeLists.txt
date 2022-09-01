@@ -41,4 +41,6 @@ zephyr_include_directories(../include)
 #-------------------------------------------------------------------------------
 # Application
 
-target_sources(app PRIVATE main.c)
+target_sources(app PRIVATE 
+    src/main.c
+)
