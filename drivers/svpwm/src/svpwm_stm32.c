@@ -13,10 +13,10 @@
 
 #include <stm32_ll_tim.h>
 
-#include <spinner/drivers/currsmp.h>
-#include <spinner/drivers/svpwm.h>
-#include <spinner/svm/svm.h>
-#include <spinner/utils/stm32_tim.h>
+#include <currsmp.h>
+#include <svpwm.h>
+#include <svm.h>
+#include <stm32_tim.h>
 
 LOG_MODULE_REGISTER(svpwm_stm32, CONFIG_SPINNER_SVPWM_LOG_LEVEL);
 

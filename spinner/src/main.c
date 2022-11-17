@@ -3,9 +3,9 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-#include <zephyr/zephyr.h>
+#include <zephyr/kernel.h>
 
-#include <spinner/control/cloop.h>
+#include <cloop.h>
 
 void main(void)
 {

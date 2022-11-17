@@ -31,16 +31,12 @@ find_package(Zephyr REQUIRED HINTS $ENV{ZEPHYR_BASE})
 
 project(spinner LANGUAGES C VERSION 1.0.0)
 
-
 #-------------------------------------------------------------------------------
 # Options
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
-zephyr_include_directories(../include)
-
 #-------------------------------------------------------------------------------
 # Application
-
 target_sources(app PRIVATE 
     src/main.c
 )

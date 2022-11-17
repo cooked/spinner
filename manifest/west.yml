@@ -6,8 +6,6 @@
 
 
 manifest:
-  self:
-    path: spinner
 
   remotes:
     - name: zephyr

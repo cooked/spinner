@@ -7,9 +7,9 @@
 
 #include <arm_math.h>
 
-#include <spinner/drivers/currsmp.h>
-#include <spinner/drivers/feedback.h>
-#include <spinner/drivers/svpwm.h>
+#include <currsmp.h>
+#include <feedback.h>
+#include <svpwm.h>
 
 struct cloop {
 	const struct device *currsmp;

@@ -10,4 +10,4 @@
 *.swp
 .vscode
 .~lock*
-.west/
+.west/*

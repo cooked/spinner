@@ -13,8 +13,8 @@
 
 #include <stm32_ll_tim.h>
 
-#include <spinner/drivers/feedback.h>
-#include <spinner/utils/stm32_tim.h>
+#include <feedback.h>
+#include <stm32_tim.h>
 
 LOG_MODULE_REGISTER(halls_stm32, CONFIG_SPINNER_FEEDBACK_LOG_LEVEL);
 

@@ -12,8 +12,8 @@
 
 #include <stm32_ll_adc.h>
 
-#include <spinner/drivers/currsmp.h>
-#include <spinner/utils/stm32_adc.h>
+#include <currsmp.h>
+#include <stm32_adc.h>
 
 LOG_MODULE_REGISTER(currsmp_shunt_stm32, CONFIG_SPINNER_CURRSMP_LOG_LEVEL);
 
