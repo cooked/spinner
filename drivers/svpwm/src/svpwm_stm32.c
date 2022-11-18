@@ -13,7 +13,7 @@
 
 #include <stm32_ll_tim.h>
 
-#include <currsmp.h>
+//#include <currsmp.h>
 #include <svpwm.h>
 #include <svm.h>
 #include <stm32_tim.h>
@@ -52,7 +52,7 @@ static void svpwm_stm32_start(const struct device *dev)
 
 	svm_init(&data->svm);
 	data->svm.sector = 5U;
-	currsmp_set_sector(config->currsmp, data->svm.sector);
+//TODO:	currsmp_set_sector(config->currsmp, data->svm.sector);
 
 	/* activate enable pins if available */
 	for (size_t i = 0U; i < config->enable_len; i++) {
@@ -128,7 +128,7 @@ static void svpwm_stm32_set_phase_voltages(const struct device *dev,
 				(uint32_t)(data->period * duties->c));
 
 	/* inform current sampling device about current sector */
-	currsmp_set_sector(config->currsmp, data->svm.sector);
+//TODO:	currsmp_set_sector(config->currsmp, data->svm.sector);
 }
 
 static const struct svpwm_driver_api svpwm_stm32_driver_api = {

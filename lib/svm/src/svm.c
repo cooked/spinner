@@ -7,7 +7,7 @@
 
 #include <arm_math.h>
 
-#include <spinner/svm/svm.h>
+#include "svm.h"
 
 /*******************************************************************************
  * Private

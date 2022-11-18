@@ -11,6 +11,8 @@
 #include <zephyr/logging/log.h>
 #include <soc.h>
 
+#include <zephyr/irq.h>
+
 #include <stm32_ll_tim.h>
 
 #include <feedback.h>

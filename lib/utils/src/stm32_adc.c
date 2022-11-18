@@ -5,7 +5,7 @@
 
 #include <zephyr/device.h>
 
-#include <spinner/utils/stm32_adc.h>
+#include "stm32_adc.h"
 
 int stm32_adc_res_get(uint8_t res_bits, uint32_t *res)
 {

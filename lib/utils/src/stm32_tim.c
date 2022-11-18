@@ -5,7 +5,7 @@
 
 #include <zephyr/device.h>
 
-#include <spinner/utils/stm32_tim.h>
+#include "stm32_tim.h"
 
 int stm32_tim_clk_get(const struct stm32_pclken *pclken, uint32_t *tim_clk)
 {
