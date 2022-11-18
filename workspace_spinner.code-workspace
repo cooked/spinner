@@ -5,6 +5,9 @@
 		}
 	],
 	"settings": {
+		"licenser.license": "AL2",
+		"licenser.author": "Stefano Cottafavi <stefano.cottafavi@gmail.com>",
+		"licenser.projectName": "Spinner",
 		"files.associations": {
 			"letib.h": "c",
 			"ad5423.h": "c",
