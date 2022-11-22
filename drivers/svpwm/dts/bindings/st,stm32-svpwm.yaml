@@ -49,7 +49,7 @@ properties:
 
   currsmp:
     type: phandle
-    required: true
+    required: false
     description: |
       Current sampling device.
 

@@ -11,6 +11,8 @@
 #include <zephyr/logging/log.h>
 #include <soc.h>
 
+#include <zephyr/sys/printk.h>
+
 #include <stm32_ll_tim.h>
 
 //#include <currsmp.h>
@@ -128,7 +130,7 @@ static void svpwm_stm32_set_phase_voltages(const struct device *dev,
 				(uint32_t)(data->period * duties->c));
 
 	/* inform current sampling device about current sector */
-//TODO:	currsmp_set_sector(config->currsmp, data->svm.sector);
+	//TODO:	currsmp_set_sector(config->currsmp, data->svm.sector);
 }
 
 static const struct svpwm_driver_api svpwm_stm32_driver_api = {
@@ -154,10 +156,11 @@ static int svpwm_stm32_init(const struct device *dev)
 	LL_TIM_OC_InitTypeDef tim_ocinit;
 	LL_TIM_BDTR_InitTypeDef brk_dt_init;
 
-	if (!device_is_ready(config->currsmp)) {
+	// TODO: add it later
+	/*if (!device_is_ready(config->currsmp)) {
 		LOG_ERR("Current sampling device not ready");
 		return -ENODEV;
-	}
+	}*/
 
 	/* configure pinmux */
 	ret = pinctrl_apply_state(config->pcfg, PINCTRL_STATE_DEFAULT);
@@ -252,7 +255,9 @@ static int svpwm_stm32_init(const struct device *dev)
 	brk_dt_init.DeadTime = 0U;
 	brk_dt_init.BreakState = LL_TIM_BREAK_ENABLE;
 	brk_dt_init.BreakPolarity = LL_TIM_BREAK_POLARITY_HIGH;
+#if defined(CONFIG_SOC_SERIES_STM32F3X) || defined(CONFIG_SOC_SERIES_STM32G4X)
 	brk_dt_init.Break2State = LL_TIM_BREAK2_ENABLE;
+#endif
 	if (LL_TIM_BDTR_Init(config->timer, &brk_dt_init) != SUCCESS) {
 		LOG_ERR("Could not initialize timer break");
 		return -EIO;
@@ -274,6 +279,8 @@ static int svpwm_stm32_init(const struct device *dev)
 		}
 	}
 
+	printk("SV-PWM configured");
+
 	return 0;
 }
 
@@ -294,7 +301,8 @@ static const struct svpwm_stm32_config svpwm_stm32_config = {
 	.enable_comp_outputs = DT_INST_PROP_OR(0, enable_comp_outputs, false),
 	.t_dead = DT_INST_PROP_OR(0, t_dead_ns, 0),
 	.t_rise = DT_INST_PROP_OR(0, t_rise_ns, 0),
-	.currsmp = DEVICE_DT_GET(DT_INST_PHANDLE(0, currsmp)),
+	// TODO: make it optional (see also other comments in code above)
+	//.currsmp = DEVICE_DT_GET(DT_INST_PHANDLE(0, currsmp)),
 	.enable = enable_pins,
 	.enable_len = ARRAY_SIZE(enable_pins),
 	.pcfg = PINCTRL_DT_INST_DEV_CONFIG_GET(0),

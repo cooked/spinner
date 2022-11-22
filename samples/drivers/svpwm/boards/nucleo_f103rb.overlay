@@ -1,0 +1,41 @@
+/*
+ * Copyright (c) 2022, Stefano Cottafavi <stefano.cottafavi@gmail.com>
+ *
+ * SPDX-License-Identifier: Apache-2.0
+ */
+
+/ {
+    chosen {
+    };
+};
+
+&timers1 {
+    status = "okay";
+    svpwm: svpwm {
+        compatible = "st,stm32-svpwm";
+        pinctrl-0 = <&tim1_ch1_pwm_pa8 &tim1_ch2_pwm_pa9 &tim1_ch3_pwm_pa10 &tim1_ch4_pwm_pa11>;
+        pinctrl-names = "default";
+
+        /* L6230 dead time (Table 6) */
+        t-dead-ns = <1000>;
+        /* L6230 rise time: tD(ON) + tRISE (Fig. 4) */
+        t-rise-ns = <1050>;
+        //currsmp = <&currsmp>;
+        enable-gpios = <&gpioc 10 GPIO_ACTIVE_HIGH>,
+                    <&gpioc 11 GPIO_ACTIVE_HIGH>,
+                    <&gpioc 12 GPIO_ACTIVE_HIGH>;
+    };
+};
+
+&pwm1 {
+    status = "disabled";
+};
+
+&adc1 {
+    status = "disabled";
+};
+
+/* FIXME: missing upstream */
+&pinctrl {
+};
+ 

@@ -10,6 +10,7 @@
 int stm32_adc_res_get(uint8_t res_bits, uint32_t *res)
 {
 	switch (res_bits) {
+// TODO: add stm32f1 support
 #if defined(CONFIG_SOC_SERIES_STM32F3X) || defined(CONFIG_SOC_SERIES_STM32G4X)
 	case 6U:
 		*res = LL_ADC_RESOLUTION_6B;
@@ -34,7 +35,34 @@ int stm32_adc_res_get(uint8_t res_bits, uint32_t *res)
 int stm32_adc_smp_get(uint32_t smp_time, uint32_t *smp)
 {
 	switch (smp_time) {
-#if defined(CONFIG_SOC_SERIES_STM32F3X)
+// RM0008 Rev 21, 11.12.4
+#if defined(CONFIG_SOC_SERIES_STM32F1X)
+	case 2U:
+		*smp = LL_ADC_SAMPLINGTIME_1CYCLE_5;
+		break;
+	case 8U:
+		*smp = LL_ADC_SAMPLINGTIME_7CYCLES_5;
+		break;
+	case 14U:
+		*smp = LL_ADC_SAMPLINGTIME_13CYCLES_5;
+		break;
+	case 29U:
+		*smp = LL_ADC_SAMPLINGTIME_28CYCLES_5;
+		break;
+	case 42U:
+		*smp = LL_ADC_SAMPLINGTIME_41CYCLES_5;
+		break;
+	case 56U:
+		*smp = LL_ADC_SAMPLINGTIME_55CYCLES_5;
+		break;
+	case 72U:
+		*smp = LL_ADC_SAMPLINGTIME_71CYCLES_5;
+		break;
+	case 240U:
+		*smp = LL_ADC_SAMPLINGTIME_239CYCLES_5;
+		break;
+#elif defined(CONFIG_SOC_SERIES_STM32F3X)
+// RM0365 Rev 8, 15.3.12
 	case 2U:
 		*smp = LL_ADC_SAMPLINGTIME_1CYCLE_5;
 		break;
@@ -97,7 +125,6 @@ int stm32_adc_clk_get(ADC_TypeDef *adc, const struct stm32_pclken *pclken,
 {
 	const struct device *clk_dev;
 	int ret;
-	uint32_t div;
 
 	/* obtain ADC clock rate */
 	clk_dev = DEVICE_DT_GET(STM32_CLOCK_CONTROL_NODE);
@@ -108,6 +135,9 @@ int stm32_adc_clk_get(ADC_TypeDef *adc, const struct stm32_pclken *pclken,
 	}
 
 	/* obtain divisor */
+#if defined(CONFIG_SOC_SERIES_STM32F3X) || defined(CONFIG_SOC_SERIES_STM32G4X)
+	uint32_t div;
+
 	div = LL_ADC_GetCommonClock(__LL_ADC_COMMON_INSTANCE(adc));
 	switch (div) {
 	case LL_ADC_CLOCK_SYNC_PCLK_DIV1:
@@ -121,6 +151,7 @@ int stm32_adc_clk_get(ADC_TypeDef *adc, const struct stm32_pclken *pclken,
 	default:
 		return -ENOTSUP;
 	}
+#endif
 
 	return 0;
 }
@@ -129,7 +160,11 @@ int stm32_adc_t_sar_get(uint8_t res_bits, float *t_sar)
 {
 	/* obtain t_sar (in clock cycles) */
 	switch (res_bits) {
-#if defined(CONFIG_SOC_SERIES_STM32F3X) || defined(CONFIG_SOC_SERIES_STM32G4X)
+#if defined(CONFIG_SOC_SERIES_STM32F1X)
+	case 12U:
+		*t_sar = 12.5f;
+		break;
+#elif defined(CONFIG_SOC_SERIES_STM32F3X) || defined(CONFIG_SOC_SERIES_STM32G4X)
 	case 6U:
 		*t_sar = 6.5f;
 		break;

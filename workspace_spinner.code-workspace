@@ -9,6 +9,7 @@
 		"licenser.author": "Stefano Cottafavi <stefano.cottafavi@gmail.com>",
 		"licenser.projectName": "Spinner",
 		"files.associations": {
+			"*.dict": "json",
 			"letib.h": "c",
 			"ad5423.h": "c",
 			"stm32f4xx_hal.h": "c",
@@ -24,7 +25,13 @@
 			"math.h": "c",
 			"wlp.h": "c",
 			"algorithm": "cpp",
-			"adg426br.h": "c"
+			"adg426br.h": "c",
+			"stm32_clock_control.h": "c",
+			"stm32_adc.h": "c",
+			"soc.h": "c",
+			"pinctrl.h": "c",
+			"gpio.h": "c",
+			"printk.h": "c"
 		},
 		"makefile.extensionOutputFolder": "./.vscode"
 	}

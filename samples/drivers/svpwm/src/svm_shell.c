@@ -42,8 +42,9 @@ static int cmd_svpwm_set(const struct shell *shell, size_t argc, char **argv)
 
 	/* NOTE: i_d = 0, assuming PMSM */
 	//cloop_set_ref(0.0f, strtof(argv[1], NULL));
-	int v_alpha = 1;
-	int v_beta = 0;
+	
+	float v_alpha = 0.2;
+	float v_beta = 0.5;
 	svpwm_set_phase_voltages(svpwm, v_alpha, v_beta);
 
 	return 0;
