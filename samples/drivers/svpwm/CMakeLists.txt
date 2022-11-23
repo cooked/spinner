@@ -14,5 +14,5 @@ project(svpwm LANGUAGES C VERSION 1.0.0)
 
 target_sources(app PRIVATE 
     src/main.c
-    src/svm_shell.c
+    #src/svm_shell.c
 )
