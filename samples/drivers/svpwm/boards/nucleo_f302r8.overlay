@@ -7,12 +7,15 @@
 / {
     chosen {
     };
+    aliases {
+    };
 };
 
 &timers1 {
     status = "okay";
     svpwm: svpwm {
         compatible = "st,stm32-svpwm";
+        status = "okay";
         pinctrl-0 = <&tim1_ch1_pa8 &tim1_ch2_pa9 &tim1_ch3_pa10 &tim1_ocp_pa11>;
         pinctrl-names = "default";
 
@@ -24,6 +27,7 @@
         enable-gpios = <&gpioc 10 GPIO_ACTIVE_HIGH>,
                     <&gpioc 11 GPIO_ACTIVE_HIGH>,
                     <&gpioc 12 GPIO_ACTIVE_HIGH>;
+        enable-comp-outputs;
     };
 };
 

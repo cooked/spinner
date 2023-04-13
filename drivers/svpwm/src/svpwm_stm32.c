@@ -122,12 +122,9 @@ static void svpwm_stm32_set_phase_voltages(const struct device *dev,
 	svm_set(&data->svm, v_alpha, v_beta);
 
 	/* program duties */
-	LL_TIM_OC_SetCompareCH1(config->timer,
-				(uint32_t)(data->period * duties->a));
-	LL_TIM_OC_SetCompareCH2(config->timer,
-				(uint32_t)(data->period * duties->b));
-	LL_TIM_OC_SetCompareCH3(config->timer,
-				(uint32_t)(data->period * duties->c));
+	LL_TIM_OC_SetCompareCH1(config->timer, (uint32_t)(data->period * duties->a));
+	LL_TIM_OC_SetCompareCH2(config->timer, (uint32_t)(data->period * duties->b));
+	LL_TIM_OC_SetCompareCH3(config->timer, (uint32_t)(data->period * duties->c));
 
 	/* inform current sampling device about current sector */
 	//TODO:	currsmp_set_sector(config->currsmp, data->svm.sector);
